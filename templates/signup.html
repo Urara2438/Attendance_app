@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>勤怠管理</title>
+</head>
+
+<body>
+    <h1>勤怠管理アプリ⏰️</h1>
+    <hr>
+    <h2>サインアップ👤➕️</h2>
+    <style>
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3px;
+        }
+
+        .form-row label {
+            width: 120px;
+        }
+    </style>
+    <form method="POST">
+        <div class="form-row">
+            <label for="username">名前</label>
+            <input type="text" id="username" name="username">
+        </div>
+        <div class="form-row">
+            <label for="phone_number">電話番号</label>
+            <input type="text" id="phone_number" name="phone_number">
+        </div>
+        <div class="form-row">
+            <label for="email_address">メールアドレス</label>
+            <input type="text" id="email_address" name="email_address">
+        </div>
+        <div class="form-row">
+            <label for="password">パスワード</label>
+            <input type="text" id="password" name="password">
+        </div>
+        <div class="form-row">
+            <label for="gender">性別</label>
+            <select id="gender" name="gender">
+                <option value="0">男性</option>
+                <option value="1">女性</option>
+            </select>
+        </div>
+        <div class="form-row">
+            <label for="birthday">生年月日</label>
+            <input type="date" id="birthday" name="birthday">
+        </div>
+        <input type="submit" value="サインアップ">
+    </form>
+    <br>
+    <div><a href="/">戻る</a></div>
+</body>
+</html>

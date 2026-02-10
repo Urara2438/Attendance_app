@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>勤怠管理</title>
+</head>
+<body>
+    <h1>勤怠管理アプリ⏰️</h1>
+    <hr>
+    <h2>登録情報の編集</h2>
+    <style>
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3px;
+        }  
+        .form-row label {
+            width: 120px;
+        }
+    </style>
+    <form method="POST">
+        <div class="form-row">
+            <label for="username">名前</label>
+            <input type="text" id="username" name="username" value="{{ user.username }}">   
+        </div>
+        <div class="form-row">
+            <label for="phone_number">電話番号</label>
+            <input type="text" id="phone_number" name="phone_number" value="{{ user.phone_number }}">
+        </div>
+        <div class="form-row">
+            <label for="email_address">メールアドレス</label>
+            <input type="text" id="email_address" name="email_address" value="{{ user.email_address }}">
+        </div>
+        <div class="form-row">
+            <label for="password">パスワード</label>
+            <input type="text" id="password" name="password" value="">
+        </div>
+        {% if message %}
+        <p style="color:red">{{ message }}</p>
+        {% endif %}
+        <input type="submit" value="更新">
+    </form>
+    <br>
+    <a href="/mypage">戻る</a>
+</body>
+</html>

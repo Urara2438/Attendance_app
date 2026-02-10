@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>勤怠管理</title>
+</head>
+
+<body>
+    <h1>勤怠管理アプリ⏰️</h1>
+    <hr>
+    <h2>登録者リスト</h2>
+    <table border="2">
+        <tr>
+            <th>名前</th>
+            <th>性別</th>
+            <th>年齢</th>
+            <th>生年月日</th>
+            <th>メールアドレス</th>
+            <th>電話番号</th>
+            <th>ステータス</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{user.username}}</td>
+            <td>{{user.gender_label}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.birthday}}</td>
+            <td>{{user.email_address}}</td>
+            <td>{{user.phone_number or "未登録"}}</td>
+            <td>{% if user.id in on_work_user_ids %}
+                <p>🟢出勤中</p>
+                {% else %}
+                <p>⚪️退勤中</p>
+                {% endif %}
+            </td>
+            <td>
+                <form action="{{ url_for('details', user_id=user.id) }}" style="display:inline;">
+                <button type="submit">詳細</button>
+            </td>
+            <td>
+                <form action="{{ url_for('delete_member', user_id=user.id) }}" method="POST" style="display:inline;">
+                <button type="submit" onclick="return confirm('本当に削除しますか？');">削除</button>
+            </form>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <div><a href="/admin">戻る</a></div>
+
+</body>
+
+</html>
