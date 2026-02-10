@@ -194,15 +194,8 @@ def admin_login():
     elif request.method == "GET":
         return render_template("admin_login.html")
 
-@app.route("/admin")
-@login_required
-def admin():
-    if current_user.is_admin != True:
-        abort(403)
-    else:
-        return render_template("admin.html")
     
-@app.route("/all_members")
+@app.route("/admin")
 @login_required
 def all_members():
     if current_user.is_admin != True:
@@ -214,7 +207,7 @@ def all_members():
         on_work_user_records = Attend.query.filter_by(status=1).all()
         for record in on_work_user_records:
             on_work_user_ids.add(record.user_id)
-        return render_template("all_members.html", users=users, on_work_user_ids=on_work_user_ids)
+        return render_template("admin.html", users=users, on_work_user_ids=on_work_user_ids)
     
     
 @app.route("/details/<int:user_id>")
@@ -236,7 +229,7 @@ def delete_member(user_id):
         if user:
             db.session.delete(user)
             db.session.commit()
-            return redirect("/all_members")
+            return redirect("/admin")
         else:
             abort(404)
 
