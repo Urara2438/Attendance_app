@@ -9,5 +9,21 @@
     <h1>勤怠管理アプリ⏰️</h1>
     <hr>
     <h2>ユーザー詳細👤</h2>
+    <h2>{{ user.username }}さんの勤務記録📊</h2>
+    <table border="2">
+    <tr>
+        <th>日付</th>
+        <th>勤務時間</th>
+    </tr>
+    {% for record in records %}
+    <tr>
+        <td>{{ record.work_in.strftime("%Y-%m-%d") }}</td>
+        <td>{{ record.formatted_work_time }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <br>
+    <a href="/admin">戻る</a>
+
 </body>
 </html>

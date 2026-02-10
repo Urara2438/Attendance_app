@@ -10,8 +10,8 @@
 <body>
     <h1>勤怠管理アプリ⏰️</h1>
     <hr>
-    <h2>ようこそ、{{ user.username }}さん！</h2>
-    
+    <h2>ようこそ，{{ user.username }}さん！</h2>
+
     <!--出勤退勤ボタン-->
     <form action="/work_in" method="POST" style="display:inline;">
     <button type="submit" style="font-size:20px; padding:12px 30px;" {% if on_work %}disabled{% endif %}>出勤</button>
