@@ -24,6 +24,13 @@ def cal_age(birthday): #年齢計算
         age = (today.year - birthday.year)-1
         return age
     
+def format_work_time(td): #秒数から勤務時間表示
+    total_seconds = int(td.total_seconds())
+    hours = total_seconds // 3600
+    minutes = (total_seconds % 3600) // 60
+    return f"{hours}時間{minutes}分"
+
+
 #ログイン機能設定--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 app.config["SECRET_KEY"] = os.urandom(24)
 login_manager = LoginManager()
@@ -216,7 +223,14 @@ def details(user_id):
     if current_user.is_admin != True:
         abort(403)
     else:
-        return render_template("details.html")
+        user = Users.query.get(user_id)
+        records = Attend.query.filter_by(user_id=user_id).all() #特定のユーザーのすべての勤怠記録を取得
+        for record in records:
+            if record.work_out and record.work_in:
+                record.formatted_work_time = format_work_time(record.work_out - record.work_in)
+            else:
+                record.formatted_work_time = "勤務時間未確定"
+        return render_template("details.html", user=user, records=records, format_work_time=format_work_time)
 
 
 @app.route("/delete_member/<int:user_id>", methods=["POST"])
