@@ -5,20 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>勤怠管理</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 
 <body>
     <h1>勤怠管理アプリ⏰️</h1>
     <hr>
+    <div class="login-card-large">
     <h2>ようこそ，{{ user.username }}さん！</h2>
+    <p style="text-align: center; font-size: 2rem;">現在時刻: {{ now.strftime("%Y-%m-%d %H:%M:%S") }}</p>
 
     <!--出勤退勤ボタン-->
+    <div class="button-group">
     <form action="/work_in" method="POST" style="display:inline;">
-    <button type="submit" style="font-size:20px; padding:12px 30px;" {% if on_work %}disabled{% endif %}>出勤</button>
+    <button type="submit" id="work_in"{% if on_work %}disabled{% endif %}>出勤</button>
     </form>
     <form action="/work_out" method="POST" style="display:inline;">
-    <button type="submit" style="font-size:20px; padding:12px 30px;" {% if not on_work %}disabled{% endif %}>退勤</button>
+    <button type="submit" id="work_out"{% if not on_work %}disabled{% endif %}>退勤</button>
     </form>
+    </div>
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     {% for message in messages %}
@@ -26,11 +31,11 @@
     {% endfor %}
     {% endif %}
     {% endwith %}
-    <br><br>
+    <br>
 
     <!--最近の勤務記録-->
     <h2>最近の勤務記録📊</h2>
-    <table border="2">
+    <table border="2" class="cute-table">
     <tr>
         <th>日付</th>
         <th>出勤時刻</th>
@@ -42,19 +47,14 @@
         <td>{{ record.work_in.strftime("%Y-%m-%d") }}</td>
         <td>{{ record.work_in.strftime("%H:%M:%S") }}</td>
         <td>{{ record.work_out.strftime("%H:%M:%S") if record.work_out else "—" }}</td>
-        <td>
-        {% if record.work_out %}
-            {{ record.work_out - record.work_in }}
-        {% else %}
-            —
-        {% endif %}
-        </td>
+        <td>{{ record.formatted_work_time }}</td>
     </tr>
     {% endfor %}
     </table>
     <br>
     <a href="{{ url_for('edit') }}">登録情報の確認及び編集</a>
     <br>
-    <a href="{{ url_for('logout') }}" onclick="return confirm('ログアウトしますか？');">ログアウト👤🔐</a>
+    <a href="{{ url_for('logout') }}" onclick="return confirm('ログアウトしますか？');">ログアウト</a>
+    </div>
 </body>
 </html>

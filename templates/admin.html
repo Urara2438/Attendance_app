@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>勤怠管理</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 
 <body>
     <h1>勤怠管理アプリ⏰️</h1>
     <hr>
+    <div class="login-card-large">
     <h2>管理者ページ🛠️</h2>
     <h3>登録者リスト</h3>
-    <table border="2">
+    <table border="2" class="cute-table">
         <tr>
             <th>名前</th>
             <th>性別</th>
@@ -33,25 +35,28 @@
             <td>{{user.email_address}}</td>
             <td>{{user.phone_number or "未登録"}}</td>
             <td>{% if user.id in on_work_user_ids %}
-                <p>🟢出勤中</p>
+                <p>🟡出勤中</p>
                 {% else %}
                 <p>⚪️退勤中</p>
                 {% endif %}
             </td>
             <td>
-                <form action="{{ url_for('details', user_id=user.id) }}" style="display:inline;">
+                <form action="{{ url_for('details', user_id=user.id) }}">
                 <button type="submit">詳細</button>
+            </form>
             </td>
             <td>
-                <form action="{{ url_for('delete_member', user_id=user.id) }}" method="POST" style="display:inline;">
+                <form action="{{ url_for('delete_member', user_id=user.id) }}" method="POST">
                 <button type="submit" onclick="return confirm('本当に削除しますか？');">削除</button>
             </form>
+            </td>
         </tr>
         {% endfor %}
     </table>
     
     <br>
     <div><a href="/">ログインページへ</a></div>
+    </div>
 
 </body>
 

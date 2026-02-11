@@ -1,0 +1,210 @@
+/* ベースフォントサイズの設定 = 10pxに設定 */
+/* 1rem = 10px にすることでremを使いやすくする */
+html {
+    font-size: 62.5%;
+}
+
+/*ヘッダー----------------------------------------------------------------------------------------*/
+h1 {
+    top: 0; /* 上から0pxの位置に固定 */
+    padding: 1.2rem 2.4rem; /* 上下12px、左右24pxの余白 */
+    border-radius: 1.2rem;
+    box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.1); /* 影の追加 */
+    background: rgba(255, 255, 255, 0.85); /* 半透明の白背景 */
+}
+
+h2 {
+    background: rgba(255, 174, 0, 0.85); /* 半透明のオレンジ背景 */
+    padding: 2rem 2.4rem; /* 上下20px、左右24pxの余白 */
+    border-radius: 1.2rem;  /* 角丸 */
+    box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.15);
+    max-width: auto;
+}
+
+h3 {
+    background: rgba(255, 174, 0, 0.5); /* 半透明のオレンジ背景 */
+    padding: 2rem 2.4rem; /* 上下20px、左右24pxの余白 */
+    border-radius: 1.2rem;  /* 角丸 */
+    box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.15);
+    max-width: auto;
+}
+
+/*body関連----------------------------------------------------------------------------------------*/
+/* 全体のフォントサイズと背景画像の設定 */
+body {
+    font-size: 1.6rem; /* 16px */
+    background-image: url("attendance_cat.png")
+}
+
+/* 背景画像の設定 */
+body {
+    background-image: url("attendance_cat.png");
+    background-size: cover; /* 画面全体に背景画像をカバー */
+    background-position: center; /* 画像を中央に配置 */
+    background-attachment: fixed; /* スクロールしても背景画像を固定 */ 
+}
+
+body {
+    position: relative;
+    background-image: url("attendance_cat.png");
+    background-size: cover;
+    background-position: center;
+}
+
+/*タグごとの設定----------------------------------------------------------------------------------------*/
+/* 見出しのテキストの色 */
+h1 {
+    color: black;
+}
+
+/* フォームの行のスタイル */
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.3rem;
+}
+.form-row label {
+    width: 12rem;
+}
+
+/* エラーメッセージのスタイル */
+#error {
+    color: red;
+    font-weight: bold;
+}
+
+/*リンク関連----------------------------------------------------------------------------------------*/
+/* リンクの色 */
+a { 
+    color: rgb(255, 140, 0);
+}
+/* ホバー時のリンクの色 */
+a:hover {
+    color: rgb(255, 200, 0);
+}
+
+/*白背景カード----------------------------------------------------------------------------------------*/
+.login-card {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 2rem 2.4rem; /* 上下20px、左右24pxの余白 */
+    border-radius: 1.2rem;  /* 角丸 */
+    box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.15);
+    max-width: 40rem;
+}
+
+.login-card-large {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 2rem 2.4rem; 
+    border-radius: 1.2rem;  
+    box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.15);
+    max-width: 100rem;
+}
+
+
+/*ボタン----------------------------------------------------------------------------------------*/
+input[type="submit"] {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 1rem;
+    background: #ffb84d;
+    color: rgb(82, 45, 21);
+    cursor: pointer; /* ポインターに変更 */
+    font-weight: bold;
+}
+
+button {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 1rem;
+    background: #ffb84d;
+    color: rgb(82, 45, 21);
+    cursor: pointer; /* ポインターに変更 */
+    font-weight: bold;
+}
+
+.button-group {
+    display: flex;
+    gap: 1.5rem; /* ボタン間のスペース */
+    justify-content: center;
+}
+
+#work_in {
+    font-size: 2.5rem;
+    color: #5a3a00;
+    width: 150px;
+    height: 80px;
+    padding: 1rem 1.4rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer; 
+    font-weight: bold;
+    background: #FFD27D;
+}
+
+#work_out {
+    font-size: 2.5rem;
+    color: #6a1f1f;
+    width: 150px;
+    height: 80px;
+    padding: 1rem 1.4rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    background: #FFB3B3;
+}
+
+button:not(:disabled):hover { filter: brightness(0.92); }
+
+#work_in:disabled,
+#work_out:disabled {
+  background: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.1);              /* ←白じゃなく薄いグレー */
+  border: 1px solid #ddd;
+  cursor: not-allowed;
+  filter: none;             /* hoverの影響を消す */
+}
+
+
+/*テーブル----------------------------------------------------------------------------------------*/
+.cute-table {
+  width: 100%;
+  border-collapse: separate;   /* 角丸のため */
+  border-spacing: 0; /* セル間の隙間をなくす */
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 1.4rem;
+  overflow: hidden;            /* 角丸に合わせて中身を切る */
+  box-shadow: 0 0.8rem 2rem rgba(0,0,0,0.1);
+  font-size: 1.4rem;
+}
+
+.cute-table th,
+.cute-table td {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  text-align: center;
+  white-space: nowrap;         /* 時刻が折り返されにくい */
+}
+
+.cute-table th {
+  background: rgba(255, 210, 125, 0.55); /* 猫背景に合うやさしいオレンジ */
+  color: #5a3a00;
+  font-weight: 700;
+}
+
+.cute-table tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.65); /* しましま */
+}
+
+.cute-table tr:hover td {
+  background: rgba(255, 236, 200, 0.6);  /* ホバーでふわっと */
+}
+
+/* 最終行の下線を消す */
+.cute-table tr:last-child td {
+  border-bottom: none;
+}
+
+
+

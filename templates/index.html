@@ -5,40 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>勤怠管理</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 
 <body>
     <h1>勤怠管理アプリ⏰️</h1>
     <hr>
+    <div class="login-card">
     <h2>ログイン👤🔓️</h2>
-<style>
-        .form-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 3px;
-        }
-
-        .form-row label {
-            width: 120px;
-        }
-    </style>
-    <form method="POST">
+    <form class="login-card" method="POST">
         <div class="form-row">
             <label for="email_address">メールアドレス</label>
-            <input type="text" id="email_address" name="email_address">
+            <input type="email" id="email_address" name="email_address">
         </div>
         <div class="form-row">
             <label for="password">パスワード</label>
             <input type="text" id="password" name="password">
         </div>
         {% if message %}
-        <p style="color:red">{{ message }}</p>
+        <p id="error">{{ message }}</span></p>
         {% endif %}
         <input type="submit" value="ログイン">
         <br>
         <br>
-        <div><a href="/signup">サインアップはこちら</a></div>
-        <div><a href="/admin_login">管理者ログインはこちら</a></div>
+        <div><a class="hover" href="/signup">サインアップはこちら</a></div>
+        <div><a class="hover" href="/admin_login">管理者ログインはこちら</a></div>
     </form>
+    </div>
 </body>
 </html>

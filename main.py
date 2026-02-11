@@ -97,7 +97,7 @@ def index(): #ログイン機能
             login_user(user)
             return redirect("/mypage")
         else:
-            return render_template("index.html", message="メールアドレスまたはパスワードが間違っています。")
+            return render_template("index.html", message="メールアドレスまたはパスワードが間違っています.")
     elif request.method == "GET":
         return render_template("index.html")
     
@@ -133,9 +133,21 @@ def signup():
 def mypage():
     user = Users.query.get(current_user.id)
     all_records = Attend.query.filter_by(user_id=current_user.id).all()
+    for record in all_records:
+        if record.work_out and record.work_in:
+            record.formatted_work_time = format_work_time(record.work_out - record.work_in)
+        else:
+            record.formatted_work_time = "未確定"
     #勤務中かどうかの判定
     on_work = Attend.query.filter_by(user_id=current_user.id, status=1).first()
-    return render_template("mypage.html", user=user, all_records=all_records, on_work=on_work)  
+    now = now_jst()
+    return render_template(
+        "mypage.html", 
+        user=user, 
+        all_records=all_records, 
+        on_work=on_work, 
+        format_work_time=format_work_time, 
+        now=now)  
 
 @app.route("/work_in", methods=["POST"])
 @login_required
@@ -229,7 +241,7 @@ def details(user_id):
             if record.work_out and record.work_in:
                 record.formatted_work_time = format_work_time(record.work_out - record.work_in)
             else:
-                record.formatted_work_time = "勤務時間未確定"
+                record.formatted_work_time = "未確定"
         return render_template("details.html", user=user, records=records, format_work_time=format_work_time)
 
 

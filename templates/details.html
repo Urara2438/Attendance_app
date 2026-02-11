@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>勤怠管理</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 <body>
     <h1>勤怠管理アプリ⏰️</h1>
     <hr>
+    <div class="login-card-large">
     <h2>ユーザー詳細👤</h2>
-    <h2>{{ user.username }}さんの勤務記録📊</h2>
-    <table border="2">
+    <h3>{{ user.username }}さんの勤務記録📊</h3>
+    <table border="2" class="cute-table">
     <tr>
         <th>日付</th>
         <th>勤務時間</th>
@@ -24,6 +26,7 @@
     </table>
     <br>
     <a href="/admin">戻る</a>
+    </div>
 
 </body>
 </html>
