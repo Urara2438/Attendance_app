@@ -9,10 +9,11 @@
 </head>
 
 <body>
-    <h1>勤怠管理アプリ⏰️</h1>
+    <h1>勤怠管理アプリ</h1>
     <hr>
     <div class="login-card-large">
-    <h2>ようこそ，{{ user.username }}さん！</h2>
+    <h2>{{ user.username }}さんのマイページ</h2>
+    <h3>打刻フォーム</h3>
     <p style="text-align: center; font-size: 2rem;">現在時刻: {{ now.strftime("%Y-%m-%d %H:%M:%S") }}</p>
 
     <!--出勤退勤ボタン-->
@@ -34,7 +35,7 @@
     <br>
 
     <!--最近の勤務記録-->
-    <h2>最近の勤務記録📊</h2>
+    <h3>最近の勤務記録</h3>
     <table border="2" class="cute-table">
     <tr>
         <th>日付</th>
